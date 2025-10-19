@@ -1,5 +1,5 @@
 import React from 'react';
-import { SectionList, Text, View, TouchableOpacity, Image, StyleSheet, FlatList } from 'react-native';
+import { SectionList, Text, FlatList } from 'react-native';
 import { groupBanksByLetter } from '../lib/utils/alphagroup';
 import { Bank } from '../lib/types/bank';
 import { BankItem } from './BankItem';
@@ -16,7 +16,9 @@ export const BankGrid = ({ banks, onSelect }: Props) => {
     <SectionList
       sections={sections}
       keyExtractor={(item) => item.id}
-      renderSectionHeader={({ section: { title } }) => <Text style={styles.header}>{title}</Text>}
+      renderSectionHeader={({ section: { title } }) => (
+        <Text className="text-lg font-bold py-2">{title}</Text>
+      )}
       renderItem={() => null}
       renderSectionFooter={({ section }) => (
         <FlatList
@@ -32,7 +34,3 @@ export const BankGrid = ({ banks, onSelect }: Props) => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  header: { fontWeight: '700', paddingVertical: 8, fontSize: 16 },
-});

@@ -11,12 +11,11 @@ export default function Home() {
   const [account, setAccount] = useState('');
   const [sheetVisible, setSheetVisible] = useState(false);
   const [selected, setSelected] = useState<Bank | null>(null);
-  const [result, setResult] = useState<string | null>(null);
   const router = useRouter();
 
   useEffect(() => {
     fetchBanks();
-  }, []);
+  }, [fetchBanks]);
 
   function onSelectBank(bank: Bank) {
     setSelected(bank);
@@ -31,29 +30,33 @@ export default function Home() {
   }
 
   return (
-    <View className="flex-1 p-4 bg-white dark:bg-black">
-      <Text className="text-xl font-bold mb-3">Verify Account</Text>
-      <Text className="text-sm text-gray-600 mb-2">Enter account number</Text>
+    <View className="flex-1 p-4 bg-black">
+      <Text className="text-xl font-bold mb-3 text-white">Verify Account</Text>
+      <Text className="text-sm text-gray-400 mb-2">Enter account number</Text>
       <TextInput
         value={account}
         onChangeText={setAccount}
         keyboardType="number-pad"
         placeholder="e.g. 1234567890"
-        className="border border-gray-200 p-3 rounded-md mb-4 bg-white dark:bg-gray-900"
+        placeholderTextColor="#9CA3AF"
+        className="border border-gray-700 p-3 rounded-md mb-4 bg-gray-800 text-white"
       />
       <Pressable
         onPress={() => setSheetVisible(true)}
-        className="py-3 px-4 rounded-md bg-blue-600"
-      >
+        className="py-3 px-4 rounded-md bg-blue-600">
         <Text className="text-white text-center">{selected ? `Bank: ${selected.name}` : 'Select bank'}</Text>
       </Pressable>
 
-      {result ? <Text className="mt-4">{result}</Text> : null}
-
       <BottomSheet visible={sheetVisible} onClose={() => setSheetVisible(false)}>
-        <View className="p-2">
-          <Text className="text-lg font-semibold mb-2">Select Bank</Text>
-          {isLoading ? <Text>Loading banks...</Text> : error ? <Text className="text-red-500">{error}</Text> : <BankGrid banks={banks} onSelect={onSelectBank} />}
+        <View className="p-2 bg-black">
+          <Text className="text-lg font-semibold mb-2 text-white">Select Bank</Text>
+          {isLoading ? (
+            <Text className="text-white">Loading banks...</Text>
+          ) : error ? (
+            <Text className="text-red-500">{error}</Text>
+          ) : (
+            <BankGrid banks={banks} onSelect={onSelectBank} />
+          )}
         </View>
       </BottomSheet>
     </View>

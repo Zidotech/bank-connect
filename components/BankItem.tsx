@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Landmark as BankIcon } from 'lucide-react-native';
 import { Bank } from '../lib/types/bank';
+import { Colors } from '../constants/theme';
 
 type Props = {
   bank: Bank;
@@ -11,52 +12,21 @@ type Props = {
 export const BankItem = ({ bank, onPress }: Props) => {
   return (
     <TouchableOpacity
-      style={styles.item}
+      className="w-1/4 items-center mb-3"
       onPress={onPress}
-      accessibilityLabel={`Select ${bank.name}`}
-    >
-      <View style={styles.iconWrap}>
+      accessibilityLabel={`Select ${bank.name}`}>
+      <View className="w-16 h-16 rounded-lg bg-gray-800 items-center justify-center mb-1.5">
         {bank.logoUrl ? (
-          <Image source={{ uri: bank.logoUrl }} style={styles.icon} />
+          <Image source={{ uri: bank.logoUrl }} className="w-16 h-16 rounded-lg" />
         ) : (
-          <View style={styles.placeholder}>
-            <BankIcon size={28} color="#555" />
+          <View className="items-center justify-center">
+            <BankIcon size={28} color={Colors.light.tint} />
           </View>
         )}
       </View>
-      <Text style={styles.name} numberOfLines={1}>
+      <Text className="text-xs text-center text-white" numberOfLines={1}>
         {bank.name}
       </Text>
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  item: {
-    width: '25%',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  iconWrap: {
-    width: 64,
-    height: 64,
-    borderRadius: 12,
-    backgroundColor: '#f1f1f1',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 6,
-  },
-  icon: {
-    width: 64,
-    height: 64,
-    borderRadius: 12,
-  },
-  placeholder: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  name: {
-    fontSize: 12,
-    textAlign: 'center',
-  },
-});
