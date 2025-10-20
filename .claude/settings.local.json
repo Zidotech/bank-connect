@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat /Users/apple/Desktop/bank-connect/lib/api/index.ts)",
+      "Bash(npx expo install react-native-svg)",
+      "WebSearch",
+      "Bash(while read file)",
+      "Bash(do echo \"=== $file line 27 ===\")",
+      "Bash(sed -n '27p' \"$file\")",
+      "Bash(done)",
+      "Bash(sed -n '27p' /Users/apple/Desktop/bank-connect/constants/theme.ts)",
+      "Bash(node -e \"const { Colors, Fonts } = require(''./constants/theme''); console.log(''Success'');\")",
+      "Bash(npx expo start --clear)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
