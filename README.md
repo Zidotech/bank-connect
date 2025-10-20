@@ -1,50 +1,71 @@
-# Welcome to your Expo app 👋
+# Bank Connect App 🏦
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile application built with Expo that enables secure bank account connections and financial data management.
 
-## Get started
+## Project Overview
 
-1. Install dependencies
+Bank Connect is designed to provide a seamless interface between users and their financial institutions. The app allows users to:
 
-   ```bash
+- Securely connect their bank accounts
+- View account balances and transactions
+- Manage multiple banking connections
+- Monitor financial activities in real-time
+
+## Technical Stack
+
+- **Frontend**: React Native with Expo
+- **Routing**: Expo Router (file-based routing)
+- **Data Management**: Zustand
+- **API Integration**: RESTful APIs with secure banking providers
+
+## Getting Started
+
+1. Install dependencies:
+
+   ```
    npm install
    ```
 
-2. Start the app
+2. Configure environment variables:
+   - Create a `.env` file based on `.env.example`
+   - Add your banking API credentials
 
-   ```bash
+3. Start the development server:
+   ```
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Project Structure
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+app/
+├── (auth)/ - Authentication flows
+├── (dashboard)/ - Main app screens
+├── api/ - API integration layer
+├── components/ - Reusable UI components
+└── utils/ - Helper functions and constants
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Security Considerations
 
-## Learn more
+- End-to-end encryption for data transmission
+- Secure storage for sensitive information
+- OAuth 2.0 implementation for bank authentication
+- Regular security audits and updates
 
-To learn more about developing your project with Expo, look at the following resources:
+## Development Approach
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. **User-Centric Design**
+   - Intuitive navigation
+   - Clear error handling
+   - Smooth onboarding flow
 
-## Join the community
+2. **Security First**
+   - Encrypted data storage
+   - Secure API communications
+   - Regular security updates
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+3. **Performance Optimization**
+   - Lazy loading of components
+   - Efficient state management
+   - Optimized API calls
